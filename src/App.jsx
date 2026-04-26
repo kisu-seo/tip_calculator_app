@@ -1,58 +1,33 @@
-import { useState } from 'react';
+import { useTipCalculator } from './hooks/useTipCalculator';
 import InputSection from './components/InputSection';
 import ResultSection from './components/ResultSection';
 import logoSvg from '../images/logo.svg';
 
+/**
+ * @component App
+ * @description 어플리케이션의 최상위 루트(Root) 컴포넌트입니다.
+ * 비즈니스 로직(useTipCalculator)과 뷰(View)를 결합하며, 전체적인 화면 레이아웃과 반응형(Responsive) 구조를 담당합니다.
+ */
 export default function App() {
-  const [bill, setBill] = useState('');
-  const [tipPercentage, setTipPercentage] = useState(null);
-  const [customTip, setCustomTip] = useState('');
-  const [people, setPeople] = useState('');
-
-  const billNum = parseFloat(bill) || 0;
-  const peopleNum = parseInt(people, 10) || 0;
-  const effectiveTip =
-    tipPercentage !== null ? tipPercentage : parseFloat(customTip) || 0;
-
-  const tipPerPerson =
-    peopleNum > 0 ? (billNum * effectiveTip) / 100 / peopleNum : 0;
-  const totalPerPerson =
-    peopleNum > 0 ? (billNum * (1 + effectiveTip / 100)) / peopleNum : 0;
-
-  const isResetActive =
-    bill !== '' || tipPercentage !== null || customTip !== '' || people !== '';
-
-  const handleReset = () => {
-    setBill('');
-    setTipPercentage(null);
-    setCustomTip('');
-    setPeople('');
-  };
+  // 상태 및 계산 로직을 커스텀 훅에서 가져와 컴포넌트를 가볍게 유지합니다.
+  const { state, actions, results } = useTipCalculator();
 
   return (
-    <div className="min-h-screen bg-[#C5E4E7] flex flex-col items-center font-space-mono">
+    // 전체 화면 배경 및 폰트 설정, 로고와 메인 컨테이너를 수직 중앙 정렬합니다.
+    <div className="min-h-screen bg-[#C5E4E7] flex flex-col items-center md:justify-center font-space-mono">
       <img
         src={logoSvg}
         alt="Splitter"
-        className="mt-[50px] mb-10 w-[87px]"
+        className="mt-[50px] md:mt-0 mb-10 md:mb-10 lg:mb-20 w-[87px]"
       />
-      <main className="w-full max-w-[375px] md:max-w-[608px] bg-white rounded-t-[24px] md:rounded-[25px] py-[34px] md:p-[54px_75.5px] md:mx-[80px] md:mb-[80px] flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12">
-        <InputSection
-          bill={bill}
-          setBill={setBill}
-          tipPercentage={tipPercentage}
-          setTipPercentage={setTipPercentage}
-          customTip={customTip}
-          setCustomTip={setCustomTip}
-          people={people}
-          setPeople={setPeople}
-        />
-        <ResultSection
-          tipPerPerson={tipPerPerson}
-          totalPerPerson={totalPerPerson}
-          isResetActive={isResetActive}
-          onReset={handleReset}
-        />
+      {/* 
+        메인 컨테이너:
+        모바일에서는 단일 열(flex-col)로 배치하고, 데스크탑(lg:)에서는 2열 그리드(grid-cols-2)로 배치하여 레이아웃을 전환합니다.
+      */}
+      <main className="w-full max-w-[375px] md:max-w-[608px] lg:max-w-[920px] bg-white rounded-t-[24px] md:rounded-[25px] py-[34px] md:p-[54px_75.5px] lg:p-[32px_40px] flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-8 lg:gap-12">
+        {/* 입력 및 결과 섹션에 필요한 데이터와 핸들러만 Prop으로 내려줍니다(Props Drilling 최소화). */}
+        <InputSection state={state} actions={actions} />
+        <ResultSection results={results} actions={actions} />
       </main>
     </div>
   );
