@@ -24,7 +24,7 @@ export default function TipSelector({
     <fieldset>
       <legend className="text-preset-5 text-grey-500 mb-2">Select Tip %</legend>
       {/* 모바일에서는 2열(grid-cols-2), 태블릿 이상에서는 3열(md:grid-cols-3)로 반응형 배치합니다. */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 justify-items-center">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {/* 배열 순회를 통해 팁 버튼을 동적으로 생성하여 코드 중복을 제거합니다. */}
         {TIP_PRESETS.map((tip) => (
           <button

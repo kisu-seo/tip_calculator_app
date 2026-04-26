@@ -16,11 +16,11 @@ export default function InputField({
   label,
   value,
   onChange,
+  onBlur,
   icon,
   errorText,
   hasError,
 }) {
-  return (
   return (
     <div className="flex flex-col gap-2">
       {/* 라벨 및 에러 메시지 영역: 에러 발생 시 조건부 렌더링을 통해 시각적 피드백 제공 */}
@@ -53,6 +53,7 @@ export default function InputField({
           placeholder="0"
           value={value}
           onChange={(e) => onChange(e.target.value)}
+          onBlur={onBlur}
           className={`
             w-full bg-grey-50 text-right text-preset-3 text-green-900
             pl-10 pr-4 py-2 rounded-[5px]

@@ -13,7 +13,7 @@ export default function ResultSection({ results, actions }) {
 
   return (
     <section
-      className="bg-green-900 rounded-2xl mx-6 md:mx-0 px-[23px] py-[29.5px] md:p-[43px_47.5px] lg:p-[37.5px_40px] flex flex-col gap-8 md:gap-4 lg:gap-[128px] lg:h-full"
+      className="bg-green-900 rounded-2xl mx-6 md:mx-0 px-[23px] py-[29.5px] md:p-[43px_47.5px] lg:p-[37.5px_40px] flex flex-col gap-8 md:gap-4 lg:justify-between lg:h-full"
       aria-label="계산 결과"
     >
       {/* 
