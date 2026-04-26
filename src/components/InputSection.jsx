@@ -13,7 +13,7 @@ export default function InputSection({
     people === '0' || (bill !== '' && people === '');
 
   return (
-    <section className="flex flex-col gap-8" aria-label="입력 폼">
+    <section className="flex flex-col gap-8 px-8" aria-label="입력 폼">
 
       {/* Bill */}
       <div className="flex flex-col gap-2">
@@ -38,8 +38,8 @@ export default function InputSection({
             value={bill}
             onChange={(e) => setBill(e.target.value)}
             className="
-              w-full bg-grey-50 text-right text-preset-4 text-green-900
-              pl-10 pr-4 py-2 rounded-lg
+              w-full bg-grey-50 text-right text-preset-3 text-green-900
+              pl-10 pr-4 py-2 rounded-[5px]
               border-2 border-transparent
               focus:outline-none focus:border-green-400
               placeholder:text-grey-300
@@ -51,10 +51,10 @@ export default function InputSection({
 
       {/* Select Tip % */}
       <fieldset>
-        <legend className="text-preset-5 text-grey-500 mb-4">
+        <legend className="text-preset-5 text-grey-500 mb-2">
           Select Tip %
         </legend>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 justify-items-center">
           {TIP_PRESETS.map((tip) => (
             <button
               key={tip}
@@ -64,7 +64,7 @@ export default function InputSection({
                 setCustomTip('');
               }}
               className={`
-                rounded-lg py-2 text-preset-4 transition-colors duration-100
+                rounded-[5px] w-[147px] h-[48px] text-preset-3 transition-colors duration-100
                 ${tipPercentage === tip
                   ? 'bg-green-400 text-green-900'
                   : 'bg-green-900 text-white hover:bg-green-200 hover:text-green-900'
@@ -87,12 +87,12 @@ export default function InputSection({
             }}
             aria-label="커스텀 팁 퍼센트 입력"
             className="
-              bg-grey-50 text-right text-preset-4 text-green-900
-              rounded-lg py-2 px-4
+              bg-grey-50 text-center text-preset-3 text-green-900
+              rounded-[5px] w-[147px] h-[48px] px-4
               placeholder:text-grey-500 placeholder:text-center
               border-2 border-transparent
               focus:outline-none focus:border-green-400
-              caret-green-400 w-full
+              caret-green-400
             "
           />
         </div>
@@ -128,8 +128,8 @@ export default function InputSection({
             value={people}
             onChange={(e) => setPeople(e.target.value)}
             className={`
-              w-full bg-grey-50 text-right text-preset-4 text-green-900
-              pl-10 pr-4 py-2 rounded-lg
+              w-full bg-grey-50 text-right text-preset-3 text-green-900
+              pl-10 pr-4 py-2 rounded-[5px]
               border-2
               focus:outline-none
               placeholder:text-grey-300
