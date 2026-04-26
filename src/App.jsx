@@ -36,7 +36,7 @@ export default function App() {
         alt="Splitter"
         className="mt-[50px] mb-10 w-[87px]"
       />
-      <main className="w-full max-w-[375px] bg-white rounded-t-[24px] py-[34px] flex flex-col gap-8">
+      <main className="w-full max-w-[375px] md:max-w-[608px] bg-white rounded-t-[24px] md:rounded-[25px] py-[34px] md:p-[54px_75.5px] md:mx-[80px] md:mb-[80px] flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12">
         <InputSection
           bill={bill}
           setBill={setBill}

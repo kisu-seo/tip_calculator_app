@@ -6,10 +6,10 @@ export default function ResultSection({
 }) {
   return (
     <section
-      className="bg-green-900 rounded-2xl mx-6 px-[23px] py-[29.5px] flex flex-col gap-8"
+      className="bg-green-900 rounded-2xl mx-6 md:mx-0 px-[23px] py-[29.5px] md:p-[43px_47.5px] flex flex-col gap-8 md:gap-4 lg:h-full"
       aria-label="계산 결과"
     >
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 md:gap-2">
         {/* Tip Amount */}
         <div className="flex justify-between items-center">
           <div>
@@ -17,7 +17,7 @@ export default function ResultSection({
             <p className="text-preset-6 text-grey-500">/ person</p>
           </div>
           <p
-            className="text-preset-2 text-green-400"
+            className="text-preset-2 md:text-preset-1 text-green-400"
             aria-live="polite"
             aria-label={`1인당 팁 ${tipPerPerson.toFixed(2)} 달러`}
           >
@@ -32,7 +32,7 @@ export default function ResultSection({
             <p className="text-preset-6 text-grey-500">/ person</p>
           </div>
           <p
-            className="text-preset-2 text-green-400"
+            className="text-preset-2 md:text-preset-1 text-green-400"
             aria-live="polite"
             aria-label={`1인당 총액 ${totalPerPerson.toFixed(2)} 달러`}
           >
@@ -47,7 +47,7 @@ export default function ResultSection({
         onClick={onReset}
         disabled={!isResetActive}
         className={`
-          w-full py-3 mt-auto rounded-[5px] text-preset-4 uppercase tracking-widest
+          w-full py-3 mt-auto md:mt-0 rounded-[5px] text-preset-4 uppercase tracking-widest
           transition-colors duration-100
           ${isResetActive
             ? 'bg-green-400 text-green-900 hover:bg-green-200 cursor-pointer'
